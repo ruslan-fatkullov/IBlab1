@@ -4,10 +4,8 @@ import time
 import first_lab
 import second_lab
 import third_lab
-
-
-
-
+import four_lab
+import five_lab
 
 if __name__ == '__main__':
     print("Выберете лабораторную работу для выполнения: "
@@ -25,6 +23,10 @@ if __name__ == '__main__':
             second_lab.init()
         elif lab_num == "3":
             third_lab.init()
+        elif lab_num == "4":
+            four_lab.init()
+        elif lab_num == "5":
+            five_lab.init()
         elif lab_num == "0":
             break
         else:
