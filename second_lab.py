@@ -1,3 +1,5 @@
+from typing import TextIO
+
 import first_lab
 import time
 import math
@@ -12,7 +14,6 @@ def init():
     print("Вторая лабораторная работа")
     result_list_of_numbers = list()
     temp = int(time.time())
-    print(temp)
     for _ in range(10):
         temp = generic_symbol(temp)
         result_list_of_numbers.append(format(temp, 'b'))
@@ -20,8 +21,8 @@ def init():
     list_of_chars = list(result_string.join(result_list_of_numbers))
     print(result_list_of_numbers)
     print(list_of_chars)
-    file = open('second.txt', 'w')
-    file.write(result_string.join(result_list_of_numbers))
-    file.close()
+    file2: TextIO = open("second.txt", "w")
+    file2.write(result_string.join(result_list_of_numbers))
+    file2.close()
     print("Последовательность случайна") if first_lab.frequency_test(list_of_chars) else print("Последовательность НЕ "
                                                                                             "случайна")

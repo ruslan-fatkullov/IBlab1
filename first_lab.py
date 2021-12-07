@@ -6,7 +6,7 @@ def generate_binary_file(file_size, file_name):
     generic_string = ""
     for _ in range(file_size):
         generic_string += random.randint(0, 1).__str__()
-    file = open(f'{file_name}.txt', 'w')
+    file = open(f'source/{file_name}.txt', 'w')
     file.write(generic_string)
     file.close()
 
@@ -18,7 +18,7 @@ def frequency_test(string_for_check):
 
 
 def read_file(reading_file):
-    f = open(f"{reading_file}.txt", 'r')
+    f = open(f"source/{reading_file}.txt", 'r')
     str_to_list = list(f.read())
     return str_to_list
 

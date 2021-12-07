@@ -32,11 +32,9 @@ def decrypt_message(code, m, n):
     decode_string = ""
     for i in range(0, string_len, 6):
         string = [code[i + j] for j in range(6)]
-        for j in range(n, 6):
+        for j in range(6-n, 6):
             decode_string += string[j]
-        for j in range(0, m):
-            decode_string += string[j]
-        for j in range(m, n):
+        for j in range(0, 6-n):
             decode_string += string[j]
     return decode_string
 
@@ -64,23 +62,29 @@ def decrypt(iteration_count, message, m, n):
 def init():
     print("Лабораторная работа №4")
     print("Введите строку для шифрования")
-    f = open("originalText.txt", 'r')
+    f = open("source/originalText.txt", 'r')
     mes = f.read()
-    m = [2, 1, 1]
-    n = [4, 3, 2]
-    result = crypt(3, mes, m, n)
-    # decode = decrypt_message(result, 2, 4)
-    # print(decode)
-    m.reverse()
-    n.reverse()
-    decode = decrypt(3, result, m, n)
+    m = [2, 1, 4]
+    n = [4, 5, 5]
+
+    encrypt = crypt(3, mes, m, n)
+
+
     print("Защифрованный текст")
-    print(result)
-    file = open('codeText.txt', 'w')
-    file.write(result)
+    print(encrypt)
+    file = open('source/codeText.txt', 'w')
+    file.write(encrypt)
     file.close()
     print("Дешифрованный текст")
+
+    m.reverse()
+    n.reverse()
+
+    f = open('source/codeText.txt')
+    encyptText = f.read()
+    decode = decrypt(3, encyptText, m, n)
+
     print(decode)
-    file = open('decodeText.txt', 'w')
+    file = open('source/decodeText.txt', 'w')
     file.write(decode)
     file.close()
